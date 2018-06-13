@@ -1,0 +1,9 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Energy@School",
+  "short_name": "Energy@School",
+  "version": "io.cordova.energyatschool",
+  "icons": [],
+  "start_url": "index.html"
+}

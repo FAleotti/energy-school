@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:; connect-src http://energyatschool.finmatica.eu http://api.openweathermap.org">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/addMeasure.css">
+        <title>Energy@School</title>
+    </head>
+    <body>
+        <div class="app">
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#"><img id="logo" src="img/logo.png"></a>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                            <li><a id="dashBtn">Dashboard<span class="glyphicon glyphicon-home"></span></a></li>
+                            <li><a id="leaderBtn">Leaderboard<span class="glyphicon glyphicon-star"></span></a></li>
+                            <li><a id="editProfileBtn">Settings<span class="glyphicon glyphicon-user"></span></a></li>
+                            <li><a id="logoutBtn">Logout<span class="glyphicon glyphicon-lock"></span></a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div id="main">
+                <form id="form" class="form-group">
+                    <div class="form-group">
+                        <p>Select the measure</p>
+                        <select class="form-control" id="sel">
+                            <option>Classroom</option>
+                        </select>
+                        <button id="select" type="submit" class="btn btn-default">Insert data</button>
+                    </div>
+                </form>
+                <form id ="classForm">
+                    <div class="form-group text-center">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <p>Select the classroom</p>
+                                <select class="form-control" id="classroom">
+                                </select>
+                            </div>
+                            <div class="col-xs-6">
+                                <p>Insert the date</p>
+                                <input type="date" id="classDate" class="form-control" name="date" required>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <p>Morning</p><p>8:00/10:00</p>
+                            </div>
+                            <div class="col-xs-4">
+                                <p>Presence</p>
+                                <label class="switch">
+                                    <input id="presence1" type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <div class="col-xs-4">
+                                <p>Temperature</p>
+                                <input type="number" id="temperature1" class="form-control" required>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <p>Midday</p><p>12:00/13:00</p>
+                            </div>
+                            <div class="col-xs-4">
+                                <p>Presence</p>
+                                <label class="switch">
+                                    <input id="presence2" type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <div class="col-xs-4">
+                                <p>Temperature</p>
+                                <input type="number" id="temperature2" class="form-control" required>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                                <div class="col-xs-4">
+                                    <p>Afternoon</p><p>15:00/16:00</p>
+                                </div>
+                                <div class="col-xs-4">
+                                    <p>Presence</p>
+                                    <label class="switch">
+                                        <input id="presence3" type="checkbox">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                                <div class="col-xs-4">
+                                    <p>Temperature</p>
+                                    <input type="number" id="temperature3" class="form-control" required>
+                                </div>
+                            </div>
+                        <button id="submit" type="submit" class="btn btn-default">Submit</button>
+                    </div>
+                </form>
+                <form id ="sensorForm">
+                    <div class="form-group text-center">
+                        <p>Insert the date</p>
+                        <input type="date" id="date" class="form-control" name="date" required>
+                        <hr>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <p>Morning</p><p>8:00/10:00</p>
+                            </div>
+                            <div class="col-xs-6">
+                                <p class="energyLabel">Energy</p>
+                                <input type="number" id="energy1" class="form-control" required>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <p>Midday</p><p>12:00/13:00</p>
+                            </div>
+                            <div class="col-xs-6">
+                                <p class="energyLabel">Energy</p>
+                                <input type="number" id="energy2" class="form-control" required>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <p>Afternoon</p><p>15:00/16:00</p>
+                            </div>
+                            <div class="col-xs-6">
+                                <p class="energyLabel">Energy</p>
+                                <input type="number" id="energy3" class="form-control" required>
+                            </div>
+                        </div>
+                        <button id="submit" type="submit" class="btn btn-default">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/addMeasure.js"></script>
+    </body>
+</html>

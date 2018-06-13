@@ -1,0 +1,50 @@
+body {
+    font-family: Geneva, Tahoma, Verdana, sans-serif;
+}
+
+#logo {
+    height: 100%;
+    width:auto;
+    max-height: 90%;
+}
+
+@font-face {
+    font-family: "glyphicons";
+    src: url("/fonts/glyphicons-halflings-regular.woff") format("woff"),
+         url("/fonts/glyphicons-halflings-regular.woff2") format("woff2");
+}
+
+.navbar-header {
+    float: none;
+}
+.navbar-toggle {
+display: block;
+}
+.navbar-collapse.collapse {
+display: none!important;
+}
+.navbar-nav {
+float: none!important;
+}
+.navbar-nav>li {
+float: none;
+}
+.navbar-collapse.collapse.in{
+display:block !important;
+}
+
+#main {
+    margin-top: 9vh;
+    padding: 20vw;
+    padding-top: 15vh;
+}
+
+.glyphicon {
+    float:right;
+} 
+
+.btn {
+    margin-top: 8vh;
+    width: 100%;
+    height:auto;
+}
